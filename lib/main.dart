@@ -48,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       description: "Pizza con 4 diferentes ingredientes a elección",
       price: 12.99,
       imageUrl: "img/food2.png",
+      //adicion de primer producto
     ),
     Product(
       name: "Churrazco de res",
@@ -55,18 +56,21 @@ class _MyHomePageState extends State<MyHomePage> {
           "Trozo de carne de ternera que se obtiene del costillar o de la paleta y que se asa a la brasa o a la parrilla.",
       price: 10.99,
       imageUrl: "img/food3.png",
+      //adicion de segundo producto
     ),
     Product(
       name: "Combo hamburguesa",
       description: "Combo de una hamburguesa, papas y una gaseosa pepsi",
       price: 5.99,
       imageUrl: "img/food4.png",
+      //adicion de tercer producto
     ),
     Product(
       name: "Empanadas",
       description: "Empanadas venezolanas de diferentes carnes",
       price: 6.99,
       imageUrl: "img/food8.png",
+      //adicion de cuarto producto
     ),
     // Add more products as needed
     Product(
@@ -74,12 +78,15 @@ class _MyHomePageState extends State<MyHomePage> {
       description: "Selección de sushi fresco y variado",
       price: 18.99,
       imageUrl: "img/food9.png",
+      //adicion de quinto producto
     ),
+
     Product(
       name: "Ensalada mediterránea",
       description: "Ensalada con ingredientes frescos y aderezo mediterráneo",
       price: 8.99,
       imageUrl: "img/food10.png",
+      //adicion de sexto producto
     ),
     Product(
       name: "Tacos mexicanos",
@@ -87,18 +94,23 @@ class _MyHomePageState extends State<MyHomePage> {
           "Tacos con tortillas de maíz rellenos de carne y guarniciones",
       price: 9.99,
       imageUrl: "img/food11.png",
+      //adicion de septimo producto
     ),
+
     Product(
       name: "Pasta carbonara",
       description: "Plato de pasta con salsa carbonara y queso parmesano",
       price: 11.99,
       imageUrl: "img/food12.png",
+      //adicion de octavo producto
     ),
     Product(
       name: "Ceviche peruano",
       description: "Ceviche de pescado fresco con limón y ají",
       price: 14.99,
       imageUrl: "img/food13.png",
+      //adicion de noveno producto
+
     ),
 
     Product(
@@ -106,18 +118,21 @@ class _MyHomePageState extends State<MyHomePage> {
       description: "Burrito relleno de pollo, arroz y frijoles",
       price: 7.99,
       imageUrl: "img/food14.png",
+      //adicion de desimo producto
     ),
     Product(
       name: "Pancakes con frutas",
       description: "Pancakes esponjosos con sirope de arce y frutas frescas",
       price: 6.49,
       imageUrl: "img/food15.png",
+      //adicion de desimo primer producto
     ),
     Product(
       name: "Pastel de chocolate",
       description: "Pastel rico y húmedo de chocolate con cobertura de ganache",
       price: 8.99,
       imageUrl: "img/food16.png",
+      //adicion de desimo segundo producto
     ),
   ];
 
