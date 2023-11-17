@@ -48,6 +48,20 @@ class Inicio extends StatelessWidget {
                     fontSize: 25,
                     color: Colors.pink)),
             SizedBox(height: 30),
+            Text('Michel Sarai Montes leiva ',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.purple)),
+            CircleAvatar(
+                backgroundImage: AssetImage('images/imagen4.jpeg'),
+                radius: 130),
+            Text('michel.montes22@itca.edu.sv',
+                style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 25,
+                    color: Colors.pink)),
+            SizedBox(height: 30),
 
           
           ],
