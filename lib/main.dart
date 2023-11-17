@@ -143,4 +143,72 @@ class _MyHomePageState extends State<MyHomePage>{
       ),
     );
   }
+
+  void addToCart(Product product) {
+    setState(() {
+      var existingItem = cartItems.firstWhere(
+        (item) => item.product == product,
+        orElse: () => CartItem(product: product, quantity: 0),
+      );
+
+      if (existingItem.quantity == 0) {
+        cartItems.add(CartItem(product: product, quantity: 1));
+      } else {
+        existingItem.quantity++;
+      }
+    });
+  }
+
+  void removeFromCart(CartItem cartItem) {
+    setState(() {
+      if (cartItem.quantity > 0) {
+        cartItem.quantity--;
+        if (cartItem.quantity == 0) {
+          cartItems.remove(cartItem);
+        }
+      }
+    });
+  }
+
+  void _showCartDrawer(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 200,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Carrito de Compras',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: cartItems.length,
+                  itemBuilder: (context, index) {
+                    return CartItemCard(
+                      cartItem: cartItems[index],
+                      onRemove: () {
+                        removeFromCart(cartItems[index]);
+                      },
+                      onIncrease: () {
+                        increaseQuantity(cartItems[index]);
+                      },
+                      onDecrease: () {
+                        decreaseQuantity(cartItems[index]);
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 }
