@@ -211,4 +211,19 @@ class _MyHomePageState extends State<MyHomePage>{
       },
     );
   }
+  void increaseQuantity(CartItem cartItem) {
+    setState(() {
+      cartItem.quantity++;
+    });
+  }
+
+  void decreaseQuantity(CartItem cartItem) {
+    setState(() {
+      if (cartItem.quantity > 1) {
+        cartItem.quantity--;
+      } else {
+        removeFromCart(cartItem);
+      }
+    });
+  }
 }
