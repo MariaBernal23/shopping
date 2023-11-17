@@ -10,7 +10,18 @@ class Coupon {
 
 class CouponPage extends StatelessWidget {
   final List<Coupon> coupons = [
-    
+    Coupon(
+      title: "Descuento 20%",
+      description: "Obtén un 20% de descuento en tu próxima orden.",
+    ),
+    Coupon(
+      title: "2x1 en Postres",
+      description: "Compra un postre y llévate otro gratis.",
+    ),
+    Coupon(
+      title: "Envío Gratis",
+      description: "Envío gratis en todas las órdenes superiores a \$50.",
+    ),
     // Agrega más cupones según sea necesario
   ];
 
