@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/cofigo.dart';
 import 'package:shopping/cupones.dart';
 import 'package:shopping/nosotros.dart';
 
@@ -228,8 +229,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             ),
+            ListTile(
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'QR',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+                  ),
+                  SizedBox(width: 8), // Espaciado entre el icono y el texto
+                  
+                ],
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Codigo()),
+                );
+              },
+            ),
           ],
         ),
+        
       ),
       // SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2)
       body: GridView.builder(
