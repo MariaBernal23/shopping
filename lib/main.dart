@@ -38,7 +38,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage>{
+  List<Product> products = [
+    Product(
+      name: "Pizza 4 estaciones",
+      description: "Pizza con 4 diferentes ingredientes a elección",
+      price: 12.99,
+      imageUrl: "img/food2.png",
+    ),
+    Product(
+      name: "Churrazco de res",
+      description: "Trozo de carne de ternera que se obtiene del costillar o de la paleta y que se asa a la brasa o a la parrilla.",
+      price: 10.99,
+      imageUrl: "img/food3.png",
+    ),
+    Product(
+      name: "Combo hamburguesa",
+      description: "Combo de una hamburguesa, papas y una gaseosa pepsi",
+      price: 5.99,
+      imageUrl: "img/food4.png",
+    ),
+    Product(
+      name: "Empanadas",
+      description: "Empanadas venezolanas de diferentes carnes",
+      price: 6.99,
+      imageUrl: "img/food8.png",
+    ),
+    // Add more products as needed
+  ];
 
+  List<CartItem> cartItems = [];
 
   @override
   Widget build(BuildContext context) {
