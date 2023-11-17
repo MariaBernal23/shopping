@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping/cupones.dart';
 
+void main() => runApp(MyApp());
+
 class Product {
   final String name;
   final String description;
