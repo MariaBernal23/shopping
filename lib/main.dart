@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping/cupones.dart';
+import 'package:shopping/nosotros.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,37 +40,84 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>{
+class _MyHomePageState extends State<MyHomePage> {
   List<Product> products = [
     Product(
       name: "Pizza 4 estaciones",
       description: "Pizza con 4 diferentes ingredientes a elección",
       price: 12.99,
       imageUrl: "img/food2.png",
-      //Adicion de primer producto
     ),
     Product(
       name: "Churrazco de res",
-      description: "Trozo de carne de ternera que se obtiene del costillar o de la paleta y que se asa a la brasa o a la parrilla.",
+      description:
+          "Trozo de carne de ternera que se obtiene del costillar o de la paleta y que se asa a la brasa o a la parrilla.",
       price: 10.99,
       imageUrl: "img/food3.png",
-      //Adicion de segundo producto
     ),
     Product(
       name: "Combo hamburguesa",
       description: "Combo de una hamburguesa, papas y una gaseosa pepsi",
       price: 5.99,
       imageUrl: "img/food4.png",
-      //Adicion de tercer producto
     ),
     Product(
       name: "Empanadas",
       description: "Empanadas venezolanas de diferentes carnes",
       price: 6.99,
       imageUrl: "img/food8.png",
-      //Adicion de cuarto producto
     ),
     // Add more products as needed
+    Product(
+      name: "Sushi variado",
+      description: "Selección de sushi fresco y variado",
+      price: 18.99,
+      imageUrl: "img/food9.png",
+    ),
+    Product(
+      name: "Ensalada mediterránea",
+      description: "Ensalada con ingredientes frescos y aderezo mediterráneo",
+      price: 8.99,
+      imageUrl: "img/food10.png",
+    ),
+    Product(
+      name: "Tacos mexicanos",
+      description:
+          "Tacos con tortillas de maíz rellenos de carne y guarniciones",
+      price: 9.99,
+      imageUrl: "img/food11.png",
+    ),
+    Product(
+      name: "Pasta carbonara",
+      description: "Plato de pasta con salsa carbonara y queso parmesano",
+      price: 11.99,
+      imageUrl: "img/food12.png",
+    ),
+    Product(
+      name: "Ceviche peruano",
+      description: "Ceviche de pescado fresco con limón y ají",
+      price: 14.99,
+      imageUrl: "img/food13.png",
+    ),
+
+    Product(
+      name: "Burrito de pollo",
+      description: "Burrito relleno de pollo, arroz y frijoles",
+      price: 7.99,
+      imageUrl: "img/food14.png",
+    ),
+    Product(
+      name: "Pancakes con frutas",
+      description: "Pancakes esponjosos con sirope de arce y frutas frescas",
+      price: 6.49,
+      imageUrl: "img/food15.png",
+    ),
+    Product(
+      name: "Pastel de chocolate",
+      description: "Pastel rico y húmedo de chocolate con cobertura de ganache",
+      price: 8.99,
+      imageUrl: "img/food16.png",
+    ),
   ];
 
   List<CartItem> cartItems = [];
@@ -153,27 +201,50 @@ class _MyHomePageState extends State<MyHomePage>{
                 );
               },
             ),
-          ],
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 20),
-          Expanded(
-            child: ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                return ProductCard(
-                  product: products[index],
-                  onAddToCart: () {
-                    addToCart(products[index]);
-                  },
+            ListTile(
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Acerca de ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+                  ),
+                  SizedBox(width: 8), // Espaciado entre el icono y el texto
+                  Icon(
+                    Icons.info,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ],
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Acerca()),
                 );
               },
             ),
-          ),
-        ],
+          ],
+        ),
+      ),
+      // SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2)
+      body: GridView.builder(
+        padding: const EdgeInsets.all(4.0),
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          return ProductCard(
+            product: products[index],
+            onAddToCart: () {
+              addToCart(products[index]);
+            },
+          );
+        },
       ),
     );
   }
@@ -254,10 +325,12 @@ class _MyHomePageState extends State<MyHomePage>{
 
   void decreaseQuantity(CartItem cartItem) {
     setState(() {
-      if (cartItem.quantity > 1) {
+      if (cartItem.quantity > 1 || cartItem.quantity == 1) {
         cartItem.quantity--;
       } else {
-        removeFromCart(cartItem);
+        if (cartItem.quantity == 0) {
+          removeFromCart(cartItem);
+        }
       }
     });
   }
@@ -272,31 +345,53 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Image.asset(product.imageUrl,
-              height: 150, width: double.infinity, fit: BoxFit.cover),
-          Padding(
-            padding: EdgeInsets.all(8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(product.name,
-                    style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                Text(product.description),
-                Text('\$${product.price.toStringAsFixed(2)}'),
+        elevation: 4.0,
+        child: Stack(
+          fit: StackFit.loose,
+          alignment: Alignment.center,
+          children: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: new Image.asset(product.imageUrl, fit: BoxFit.contain),
+                ),
+                Text(
+                  product.name,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Text('\$${product.price.toStringAsFixed(2)}'),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        right: 8.0,
+                        bottom: 8.0,
+                      ),
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: GestureDetector(
+                          child: IconButton(
+                            icon: Icon(Icons.shopping_cart),
+                            onPressed: onAddToCart,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
               ],
-            ),
-          ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: onAddToCart,
-          ),
-        ],
-      ),
-    );
+            )
+          ],
+        ));
   }
 }
 
