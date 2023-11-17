@@ -47,21 +47,26 @@ class Acerca extends StatelessWidget {
             'Maria Haydee Villalta',
             'maria.villalta22@itca.edu.sv',
             'profile1.jpeg',
+            //primer colaborador
           ),
           _buildProfile(
             'Jenifer Milena Duran',
             'jenifer.duran22@itca.edu.sv',
             'profile2.jpeg',
+            //segundo colaborador
           ),
           _buildProfile(
             'Maria Jose Bernal Gamez',
             'maria.bernal22@itca.edu.sv',
             'profile3.jpeg',
+            //tercer colaborador
           ),
+
           _buildProfile(
             'Michel Sarai Montes Leiva',
             'michel.montes22@itca.edu.sv',
             'proffile4.jpeg',
+            //cuarto colaborador
           ),
         ],
       ),

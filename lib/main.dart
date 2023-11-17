@@ -157,6 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      //adicion de menu drawer  cupones, productos,acerca de y qr
       drawer: Drawer(
         backgroundColor: Colors.black,
         child: ListView(
@@ -271,6 +272,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         
       ),
+      //fin de menu drawer
       // SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2)
       body: GridView.builder(
         padding: const EdgeInsets.all(4.0),
