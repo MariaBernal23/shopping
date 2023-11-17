@@ -34,6 +34,19 @@ class Inicio extends StatelessWidget {
                     fontWeight: FontWeight.normal,
                     fontSize: 25,
                     color: Colors.pink)),
+            SizedBox(height: 30),Text('Maria jose bernal Gamez ',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.purple)),
+            CircleAvatar(
+                backgroundImage: AssetImage('images/imagen3.jpeg'),
+                radius: 130),
+            Text('maria.bernal22@itca.edu.sv',
+                style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 25,
+                    color: Colors.pink)),
             SizedBox(height: 30),
 
           
