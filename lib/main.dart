@@ -211,6 +211,7 @@ class _MyHomePageState extends State<MyHomePage>{
       },
     );
   }
+
   void increaseQuantity(CartItem cartItem) {
     setState(() {
       cartItem.quantity++;
@@ -225,5 +226,88 @@ class _MyHomePageState extends State<MyHomePage>{
         removeFromCart(cartItem);
       }
     });
+  }
+}
+
+class ProductCard extends StatelessWidget {
+  final Product product;
+  final VoidCallback onAddToCart;
+
+  ProductCard({required this.product, required this.onAddToCart});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Image.asset(product.imageUrl,
+              height: 150, width: double.infinity, fit: BoxFit.cover),
+          Padding(
+            padding: EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(product.name,
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(product.description),
+                Text('\$${product.price.toStringAsFixed(2)}'),
+              ],
+            ),
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: onAddToCart,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CartItemCard extends StatelessWidget {
+  final CartItem cartItem;
+  final VoidCallback onRemove;
+  final VoidCallback onIncrease;
+  final VoidCallback onDecrease;
+
+  CartItemCard({
+    required this.cartItem,
+    required this.onRemove,
+    required this.onIncrease,
+    required this.onDecrease,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(16),
+      child: ListTile(
+        leading: Image.asset(
+          cartItem.product.imageUrl,
+          height: 50,
+          width: 50,
+          fit: BoxFit.cover,
+        ),
+        title: Text(cartItem.product.name),
+        subtitle: Text(
+            '\$${(cartItem.product.price * cartItem.quantity).toStringAsFixed(2)}'),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              icon: Icon(Icons.remove),
+              onPressed: onDecrease,
+            ),
+            Text('Quantity: ${cartItem.quantity}'),
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: onIncrease,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
