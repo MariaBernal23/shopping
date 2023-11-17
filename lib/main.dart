@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/cofigo.dart';
+import 'package:shopping/codigo.dart';
 import 'package:shopping/cupones.dart';
 import 'package:shopping/nosotros.dart';
 
